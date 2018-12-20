@@ -22,7 +22,7 @@ router.post("/signup", (req, res, next) => {
 
 //login
 router.post("/login", (req, res, next) => {
-  passport.authenticate("local", (err, user, infor) => {
+  passport.authenticate("local", (err, user, info) => {
     if (err) return res.status(500).json(info);
     if (!user) return res.status(404).json(info);
     req.login(user, err => {

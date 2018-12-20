@@ -19,6 +19,10 @@ const productSchema = new Schema(
     photo: {
       type: String,
       required: true
+    },
+    category: {
+      type: String,
+      enum: ["Sabores", "Colores", "Materias Primas"]
     }
   },
   {

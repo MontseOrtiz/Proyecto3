@@ -10,9 +10,18 @@ const userSchema = new Schema(
       type: String,
       unique: true
     },
-    telephone: Number,
+    telephones: [
+      {
+        type: Number,
+        tipo: {
+          type: String,
+          enum: ["Casa", "Celular"]
+        }
+      }
+    ],
     photoURL: String,
     role: {
+      type: String,
       enum: ["admin", "user"],
       default: "user"
     },
