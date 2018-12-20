@@ -12,6 +12,7 @@ class App extends Component {
           <Link to="/login">Login</Link>
           <Link to="/signup">Signup</Link>
           <Link to="/profile">Profile</Link>
+          <Link to="/new">Agregar nuevo producto</Link>
         </nav>
         <Routes />
       </div>

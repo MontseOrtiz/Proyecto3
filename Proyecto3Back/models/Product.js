@@ -7,10 +7,9 @@ const productSchema = new Schema(
       type: String,
       required: true
     },
-    quantity: {
+    weight: {
       type: Number,
-      enum: ["500", "1000"],
-      required: true
+      required: false
     },
     price: {
       type: Number,
@@ -18,7 +17,7 @@ const productSchema = new Schema(
     },
     photo: {
       type: String,
-      required: true
+      required: false
     },
     category: {
       type: String,

@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const Product = require("../models/Product");
+const uploadCloud = require("../helpers/cloudinary");
 
 //Create a product
 router.post("/new", (req, res, next) => {
   Product.create({
     name: req.body.name,
-    quantity: req.body.quantity,
+    weight: req.body.weight,
     price: req.body.price,
     photo: req.body.photo,
     category: req.body.category
@@ -36,7 +37,7 @@ router.get("/products/:id", (req, res, next) => {
 });
 
 //Update a product
-router.put("/products/:id", (req, res, next) => {
+router.put("/products/:id", uploadCloud.single("archivo"), (req, res, next) => {
   Product.findByIdAndUpdate(req.params.id, { $set: req.body })
     .then(response => {
       res.json(response, { message: "Producto modificado exitosamente" });
@@ -45,7 +46,7 @@ router.put("/products/:id", (req, res, next) => {
 });
 
 //Delete a product
-router.delete("/books/:id", (req, res, next) => {
+router.delete("/products/:id", (req, res, next) => {
   Product.findByIdAndRemove(req.params.id)
     .then(response => {
       res.json({ message: "Producto eliminado" });
