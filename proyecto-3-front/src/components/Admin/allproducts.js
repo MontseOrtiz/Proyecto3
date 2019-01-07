@@ -100,4 +100,4 @@ class AllProductsAdmin extends Component {
   }
 }
 
-export default AllProductsAdmin;
+// export default AllProductsAdmin;

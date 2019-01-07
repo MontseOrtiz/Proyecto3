@@ -6,8 +6,6 @@ import { Card, Button, Row, Col } from "antd";
 
 class AllProductsUser extends Component {
   state = {
-    user: {},
-
     products: []
   };
   allProducts = () => {

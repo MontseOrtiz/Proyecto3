@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { sabores, colores, materiasPrimas } from "../../services/product";
 import { Menu, Icon, Avatar } from "antd";
 import { Link } from "react-router-dom";
 
@@ -7,7 +8,9 @@ const MenuItemGroup = Menu.ItemGroup;
 
 class Navbar extends Component {
   state = {
-    current: "Home"
+    current: "Home",
+    user: {},
+    products: []
   };
 
   handleClick = e => {
@@ -44,9 +47,15 @@ class Navbar extends Component {
               <Menu.Item key="setting:1">
                 <Link to="/allProducts">Todos los productos </Link>
               </Menu.Item>
-              <Menu.Item key="setting:2">Sabores</Menu.Item>
-              <Menu.Item key="setting:3">Colores</Menu.Item>
-              <Menu.Item key="setting:4">Materias Primas</Menu.Item>
+              <Menu.Item key="setting:2">
+                <Link to="/sabores">Sabores</Link>
+              </Menu.Item>
+              <Menu.Item key="setting:3">
+                <Link to="/colores"> Colores</Link>
+              </Menu.Item>
+              <Menu.Item key="setting:4">
+                <Link to="/colores">Materias Primas</Link>
+              </Menu.Item>
             </MenuItemGroup>
           </SubMenu>
           <Menu.Item key="aboutus">
@@ -67,10 +76,15 @@ class Navbar extends Component {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {" "}
               <Icon type="environment" />
               Ubicación
             </a>
+          </Menu.Item>
+          <Menu.Item key="CDC">
+            <Link to="/new">
+              <Icon type="shopping-cart" />
+              CDC
+            </Link>
           </Menu.Item>
           <Menu.Item key="login">
             <Link to="/login">
@@ -85,7 +99,6 @@ class Navbar extends Component {
               Registrarse
             </Link>
           </Menu.Item>
-
           <SubMenu
             title={
               <span className="submenu-title-wrapper">

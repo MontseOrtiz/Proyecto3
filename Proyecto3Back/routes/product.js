@@ -27,8 +27,35 @@ router.get("/products", (req, res, next) => {
     .catch(e => res.json(e));
 });
 
+//Colors
+router.get("/colores", (req, res, next) => {
+  Product.find({ category: req.body.category })
+    .then(response => {
+      res.json(response);
+    })
+    .catch(e => res.json(e));
+});
+
+//Flavors
+router.get("/sabores", (req, res, next) => {
+  Product.find({ category: req.body.category })
+    .then(response => {
+      res.json(response);
+    })
+    .catch(e => res.json(e));
+});
+
+//Raw Materials
+router.get("/materias-primas", (req, res, next) => {
+  Product.find({ category: req.body.category })
+    .then(response => {
+      res.json(response);
+    })
+    .catch(e => res.json(e));
+});
+
 //Single product
-router.get("/products/:id", (req, res, next) => {
+router.get("/:id", (req, res, next) => {
   Product.findById(req.params.id)
     .then(response => {
       res.json(response);
@@ -37,16 +64,16 @@ router.get("/products/:id", (req, res, next) => {
 });
 
 //Update a product
-router.put("/products/:id", (req, res, next) => {
+router.put("/edit/:id", (req, res, next) => {
   Product.findByIdAndUpdate(req.params.id, { $set: req.body })
     .then(response => {
-      res.json(response, { message: "Producto modificado exitosamente" });
+      res.json(response);
     })
     .catch(e => res.json(e));
 });
 
 //Delete a product
-router.delete("/products/:id", (req, res, next) => {
+router.delete("/:id", (req, res, next) => {
   Product.findByIdAndRemove(req.params.id)
     .then(response => {
       res.json({ message: "Producto eliminado" });

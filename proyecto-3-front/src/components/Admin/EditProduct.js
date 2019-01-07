@@ -1,39 +1,26 @@
 import React, { Component } from "react";
-import axios from "axios";
-import { uploadFile } from "../../services/product";
+import {
+  updateProduct,
+  uploadFile,
+  singleProducts
+} from "../../services/product";
 
 class EditProduct extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: this.props.product.name,
-      weight: this.props.product.weight,
-      measure: this.props.product.measure,
-      price: this.props.product.price,
-      category: this.props.product.category,
-      photo: this.props.product.photo
-    };
-  }
+  state = {
+    product: {}
+  };
 
-  handleFormSubmit = e => {
-    const { name, weight, measure, price, category, photo } = this.state;
-
+  updateProduct = e => {
     e.preventDefault();
-
-    axios
-      .put(
-        `http://localhost:3000/product/products/${this.props.product._id}`,
-        name,
-        weight,
-        measure,
-        price,
-        category,
-        photo
-      )
-      .then(() => {
-        this.props.getProduct();
+    const { product } = this.state;
+    updateProduct(product)
+      .then(r => {
+        console.log(r);
+        this.props.history.push("/allproducts");
       })
-      .catch(error => console.log(error));
+      .catch(e => {
+        console.log(e);
+      });
   };
 
   handleImage = e => {
@@ -55,26 +42,40 @@ class EditProduct extends Component {
     this.setState({ product });
   };
 
+  componentWillMount() {
+    //this.product();
+    const { id } = this.props.match.params;
+    singleProducts(id)
+      .then(product => this.setState({ product }))
+      .catch(e => console.log(e));
+  }
+
   render() {
+    const { product } = this.state;
+    console.log(product);
     return (
       <div>
-        <p>Yo edito</p>
-        <form method="POST" onSubmit={this.handleFormSubmit}>
+        <form method="POST" onSubmit={this.updateProduct}>
           <label>Nombre:</label>
           <input
             type="text"
             name="name"
-            value={this.state.name}
+            value={product.name}
             onChange={this.handleText}
           />
           <label>Peso:</label>
           <input
             type="number"
             name="weight"
-            value={this.state.weight}
             onChange={this.handleText}
+            value={product.weight}
           />
-          <select name="measure" onChange={this.handleText}>
+          <select
+            name="measure"
+            onChange={this.handleText}
+            value={product.measure}
+          >
+            <option value="medida">Medida</option>
             <option value="gr">gr</option>
             <option value="ml">ml</option>
           </select>
@@ -82,17 +83,22 @@ class EditProduct extends Component {
           <input
             type="number"
             name="price"
-            value={this.state.price}
             onChange={this.handleText}
+            value={product.price}
           />
           <label>Categoría:</label>
-          <select name="category" onChange={this.handleText}>
+          <select
+            name="category"
+            onChange={this.handleText}
+            value={product.category}
+          >
+            <option value="category">Categoría</option>
             <option value="Sabores">Sabores</option>
             <option value="Colores">Colores</option>
             <option value="Materias Primas">Materias Primas</option>
           </select>
           <label>Imagen:</label>
-          <img src={this.state.photo} alt="producto" />
+          <img src={product.photo} alt="product" />
           <input type="file" onChange={this.handleImage} name="photo" />
           <input type="submit" name="submit" />
         </form>

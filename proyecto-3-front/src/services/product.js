@@ -14,17 +14,41 @@ export const newProduct = product => {
 //Review
 
 //All products
-export const allProducts = products => {
+export const allProducts = () => {
   return axios
-    .get(host + "/products", products)
+    .get(host + "/products")
+    .then(response => response.data)
+    .catch(err => err.response);
+};
+
+//Flavors
+export const sabores = category => {
+  return axios
+    .get(host + "/sabores", category)
+    .then(response => response.data)
+    .catch(err => err.response);
+};
+
+//Colors
+export const colores = category => {
+  return axios
+    .get(host + "/colores", category)
+    .then(response => response.data)
+    .catch(err => err.response);
+};
+
+//Raw material
+export const materiasPrimas = category => {
+  return axios
+    .get(host + "/materias-primas", category)
     .then(response => response.data)
     .catch(err => err.response);
 };
 
 //Single product
-export const singleProducts = products => {
+export const singleProducts = id => {
   return axios
-    .get(host + "/products/:id", products)
+    .get(host + "/" + id)
     .then(response => response.data)
     .catch(err => err.response);
 };
@@ -32,15 +56,15 @@ export const singleProducts = products => {
 //Update a product
 export const updateProduct = product => {
   return axios
-    .put(host + "/products/:id", product, { withCredentials: true })
+    .put(host + "/edit/" + product._id, product, { withCredentials: true })
     .then(response => response.data)
     .catch(err => err.response);
 };
 
 //Delete a product
-export const deleteProduct = product => {
+export const deleteProduct = id => {
   return axios
-    .delete(host + "/products/" + product._id, { withCredentials: true })
+    .delete(host + "/" + id, { withCredentials: true })
     .then(response => response.data)
     .catch(err => err.response);
 };

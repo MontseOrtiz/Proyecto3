@@ -1,40 +1,31 @@
 import React, { Component } from "react";
-import axios from "axios";
-import { deleteProduct } from "../../services/product";
+import AllProductsAdmin from "../Admin/AllProductsAdmin";
+import AllProductsUser from "../User/AllProductsUser";
 
 class Products extends Component {
   state = {
-    user: {},
-    products: []
+    user: {}
   };
 
-  allProducts = () => {
-    axios
-      .get("http://localhost:3000/product/products")
-      .then(response => {
-        this.setState({ products: response.data });
-      })
-      .catch(e => console.log(e));
-  };
+  // componentWillMount() {
+  //   getProfile()
+  //     .then(user => {
+  //       this.setState({ user });
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }
 
-  deleteProduct = id => {
-    console.log(id);
-    axios
-      .delete(`http://localhost:3000/product/products/${id}`)
-      .then(r => {
-        console.log(r);
-        this.allProducts();
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
-  componentWillMount() {
-    this.allProducts();
-  }
   render() {
-    return <div />;
+    const { user } = this.state;
+    const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    if (!loggedUser) this.props.history.push("/login");
+    return (
+      <div>
+        {user.role === "admin" ? <AllProductsAdmin /> : <AllProductsUser />}
+      </div>
+    );
   }
 }
 
