@@ -27,7 +27,7 @@ const Signup = ({ signup, handleText }) => {
         </p>
         <p>
           Foto de perfil:
-          {/* <input type="password" name="password" onChange={handleText} /> */}
+          {/* <input type="file" onChange={handleImage} name="photo" /> */}
         </p>
         <input type="submit" name="submit" />
       </form>

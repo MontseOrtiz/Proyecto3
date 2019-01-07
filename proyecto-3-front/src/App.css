@@ -1,32 +1,77 @@
-.App {
+/* NAVBAR */
+
+/* Logo */
+.logo img {
+  height: 13vh;
+  width: 19vw;
+  padding-bottom: 5%;
+  padding-left: 10%;
+}
+
+/* Carousel */
+
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 160px;
+  line-height: 160px;
+  background: #c7d3e9;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+
+/* QUESTIONS */
+.content-questions {
+  background: white;
+}
+.top-part-questions {
+  background: #e57d6b;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.5vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.questions {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 5% 15%;
+  background: white;
+}
+
+.questions h4 {
+  font-size: 2.5vh;
+  color: #4b6ebd;
+  padding-bottom: 3%;
+}
+
+.questions p {
+  font-size: 2.5vh;
+  color: rgb(44, 43, 43);
+  padding-bottom: 3%;
+}
+/* ABOUTUS */
+
+.fondo-aboutus {
+  background: url("images/aboutus-fondo.jpeg");
+}
+
+.contenido-aboutus {
+  background: white;
+  margin: 5% 15%;
+  padding: 5%;
+}
+.contenido-aboutus h2 {
+  font-size: 4vh;
+  padding-bottom: 3%;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.contenido-aboutus p {
+  text-align: justify;
+  color: rgb(44, 43, 43);
+  font-size: 2.4vh;
 }

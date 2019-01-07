@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const Product = require("../models/Product");
-const uploadCloud = require("../helpers/cloudinary");
 
 //Create a product
 router.post("/new", (req, res, next) => {
@@ -37,7 +36,7 @@ router.get("/products/:id", (req, res, next) => {
 });
 
 //Update a product
-router.put("/products/:id", uploadCloud.single("archivo"), (req, res, next) => {
+router.put("/products/:id", (req, res, next) => {
   Product.findByIdAndUpdate(req.params.id, { $set: req.body })
     .then(response => {
       res.json(response, { message: "Producto modificado exitosamente" });

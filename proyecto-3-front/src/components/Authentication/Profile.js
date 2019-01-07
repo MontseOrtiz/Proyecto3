@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getProfile } from "../../services/auth";
 import ProfileAdmin from "../Admin/ProfileAdmin";
 import ProfileUser from "../User/ProfileUser";
+import UserLog from "../Navbar/UserLog";
 
 class Profile extends Component {
   state = {
@@ -24,7 +25,7 @@ class Profile extends Component {
     return (
       <div>
         {user.role === "admin" ? (
-          <ProfileAdmin user={this.user} {...user} />
+          (<ProfileAdmin user={this.user} {...user} />, <UserLog />)
         ) : (
           <ProfileUser user={this.user} {...user} />
         )}

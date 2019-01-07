@@ -3,6 +3,7 @@ import React from "react";
 const EditProduct = ({ newProduct, handleChange }) => {
   return (
     <div>
+      <p>Yo edito</p>
       <form method="POST" onSubmit={newProduct}>
         <label>Nombre:</label>
         <input type="text" name="name" onChange={handleChange} />
