@@ -11,19 +11,19 @@ const Home = () => (
       <Content>
         <Carousel autoplay>
           <div>
-            <img src="../../images/logo.png" alt="logo" />
+            <img src="../../images/Logo.png" alt="Logo" />
             <h3>1</h3>
           </div>
           <div>
-            <img src="../../images/logo.png" alt="logo" />
+            <img src="../../images/Logo.png" alt="Logo" />
             <h3>2</h3>
           </div>
           <div>
-            <img src="../../images/logo.png" alt="logo" />
+            <img src="../../images/Logo.png" alt="Logo" />
             <h3>3</h3>
           </div>
           <div>
-            <img src="../../images/logo.png" alt="logo" />
+            <img src="../../images/Logo.png" alt="Logo" />
             <h3>4</h3>
           </div>
         </Carousel>

@@ -40,7 +40,7 @@ export const updateProduct = product => {
 //Delete a product
 export const deleteProduct = product => {
   return axios
-    .delete(host + "/products/:id", { withCredentials: true })
+    .delete(host + "/products/" + product._id, { withCredentials: true })
     .then(response => response.data)
     .catch(err => err.response);
 };

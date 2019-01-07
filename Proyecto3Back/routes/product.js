@@ -7,6 +7,7 @@ router.post("/new", (req, res, next) => {
   Product.create({
     name: req.body.name,
     weight: req.body.weight,
+    measure: req.body.measure,
     price: req.body.price,
     photo: req.body.photo,
     category: req.body.category

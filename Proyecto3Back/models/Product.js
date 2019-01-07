@@ -9,7 +9,11 @@ const productSchema = new Schema(
     },
     weight: {
       type: Number,
-      required: false
+      required: true
+    },
+    measure: {
+      type: String,
+      enum: ["gr", "ml"]
     },
     price: {
       type: Number,

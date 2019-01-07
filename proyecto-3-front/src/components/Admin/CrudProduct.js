@@ -14,6 +14,7 @@ class CrudProduct extends Component {
     newProduct(product)
       .then(r => {
         console.log(r);
+        this.props.history.push("/allproducts");
       })
       .catch(e => {
         console.log(e);
@@ -49,6 +50,19 @@ class CrudProduct extends Component {
     product[field] = e.target.value;
     console.log(product);
     this.setState({ product });
+  };
+
+  renderEditForm = () => {
+    if (!this.state.title) {
+      this.getSingleProject();
+    } else {
+      return (
+        <EditProduct
+          theProject={this.state}
+          getTheProject={this.getSingleProject}
+        />
+      );
+    }
   };
 
   render() {

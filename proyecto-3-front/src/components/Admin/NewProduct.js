@@ -8,6 +8,10 @@ const NewProduct = ({ newProduct, handleText, handleImage }) => {
         <input type="text" name="name" onChange={handleText} />
         <label>Peso:</label>
         <input type="number" name="weight" onChange={handleText} />
+        <select name="measure" onChange={handleText}>
+          <option value="gr">gr</option>
+          <option value="ml">ml</option>
+        </select>
         <label>Precio:</label>
         <input type="number" name="price" onChange={handleText} />
         <label>Categoría:</label>
