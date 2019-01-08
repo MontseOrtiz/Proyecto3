@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 // import { Link } from "react-router-dom";
-import { deleteProduct } from "../../services/product";
 import { Card, Button, Row, Col } from "antd";
 
 class AllProductsUser extends Component {
@@ -15,17 +14,6 @@ class AllProductsUser extends Component {
         this.setState({ products: response.data });
       })
       .catch(e => console.log(e));
-  };
-
-  deleteProduct = e => {
-    e.preventDefault();
-    deleteProduct()
-      .then(r => {
-        console.log(r);
-      })
-      .catch(e => {
-        console.log(e);
-      });
   };
 
   componentWillMount() {
@@ -53,9 +41,7 @@ class AllProductsUser extends Component {
                   <p>Precio: {product.price} MXN</p>
                   <p>Categoría: {product.category}</p>
 
-                  <Button type="primary" deleteProduct={deleteProduct}>
-                    Agregar al carrito
-                  </Button>
+                  <Button type="primary">Agregar al carrito</Button>
                 </Card>
               </Col>
             );

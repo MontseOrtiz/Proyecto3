@@ -74,7 +74,7 @@ export const uploadFile = file => {
   console.log("subiendo");
   const task = firebase
     .storage()
-    .ref("Prodcutos")
+    .ref("Productos")
     .child(file.name)
     .put(file);
 

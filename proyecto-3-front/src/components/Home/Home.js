@@ -10,20 +10,17 @@ const Home = () => (
     <Layout>
       <Content>
         <Carousel autoplay>
-          <div>
+          <div className="carousel_div1">
             <img src="../../images/Logo.png" alt="Logo" />
             <h3>1</h3>
           </div>
-          <div>
-            <img src="../../images/Logo.png" alt="Logo" />
+          <div className="carousel_div2">
             <h3>2</h3>
           </div>
-          <div>
-            <img src="../../images/Logo.png" alt="Logo" />
+          <div className="carousel_div3">
             <h3>3</h3>
           </div>
-          <div>
-            <img src="../../images/Logo.png" alt="Logo" />
+          <div className="carousel_div4">
             <h3>4</h3>
           </div>
         </Carousel>

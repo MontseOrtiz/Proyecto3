@@ -1,4 +1,5 @@
 import axios from "axios";
+import firebase from "./firebase";
 
 const host = "http://localhost:3000/auth";
 
@@ -29,9 +30,30 @@ export const logout = () => {
 };
 
 //profile
-export const getProfile = () => {
+export const getProfile = id => {
   return axios
-    .get(host + "/profile", { withCredentials: true })
+    .get(host + "/profile/" + id, { withCredentials: true })
     .then(response => response.data)
     .catch(err => err.response);
+};
+
+//edit profile
+
+export const updateProfile = user => {
+  return axios
+    .put(host + "/prodifle/edit/" + user._id, { withCredentials: true })
+    .then(response => response.data)
+    .catch(err => err.response);
+};
+
+//Upload Photos
+export const uploadFile = file => {
+  console.log("subiendo");
+  const task = firebase
+    .storage()
+    .ref("Perfiles")
+    .child(file.name)
+    .put(file);
+
+  return task.then(snap => snap.ref.getDownloadURL()).then(link => link);
 };

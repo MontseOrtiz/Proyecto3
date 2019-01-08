@@ -37,8 +37,9 @@ router.get("/colores", (req, res, next) => {
 });
 
 //Flavors
-router.get("/sabores", (req, res, next) => {
-  Product.find({ category: req.body.category })
+router.get("/sabores/:category", (req, res, next) => {
+  const { category } = req.params;
+  Product.find({ category })
     .then(response => {
       res.json(response);
     })

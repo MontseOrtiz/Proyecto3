@@ -2,8 +2,8 @@
 
 /* Logo */
 .logo img {
-  height: 13vh;
-  width: 19vw;
+  height: 10vh;
+  width: 18vw;
   padding-bottom: 1%;
 }
 
@@ -19,6 +19,14 @@
 
 .ant-carousel .slick-slide h3 {
   color: #fff;
+}
+
+.carousel_div2 {
+  background-image: url("images/Fondo_Home_1.jpeg");
+  background-repeat: no-repeat;
+  background-size: 901px 417.19px;
+  /* width: 100%;
+  height: 100%; */
 }
 
 /* QUESTIONS */
@@ -104,4 +112,79 @@
 
 .form-login p {
   text-align: center;
+}
+
+/* FORMULARIOS */
+
+.edit-form {
+  width: 80%;
+  background: #e9ebeb;
+}
+
+.div_form_principal {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3%;
+  padding-bottom: 6%;
+  background: #d2dad6d8;
+}
+
+.div_form_product {
+  width: 600px;
+  border-radius: 5px;
+  background-color: #f7ebe0;
+  padding: 30px;
+}
+
+.div_form_product input[type="text"],
+input[type="number"],
+input[type="file"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background: white;
+}
+
+.div_form_product input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.div_form_product select {
+  width: 100%;
+  height: 47px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.div_form_product input[type="submit"] {
+  width: 100%;
+  background-color: #62fabad8;
+  color: rgb(59, 58, 58);
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.div_form_product input[type="submit"]:hover {
+  background-color: #8bf3c8b7;
 }

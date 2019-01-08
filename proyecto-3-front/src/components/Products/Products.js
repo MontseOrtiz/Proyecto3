@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { allProducts } from "../../services/product";
 import AllProductsAdmin from "../Admin/AllProductsAdmin";
 import AllProductsUser from "../User/AllProductsUser";
 
@@ -7,24 +8,23 @@ class Products extends Component {
     user: {}
   };
 
-  // componentWillMount() {
-  //   getProfile()
-  //     .then(user => {
-  //       this.setState({ user });
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }
+  allProducts = () => {
+    allProducts()
+      .then(response => {
+        this.setState({ products: response });
+      })
+      .catch(e => console.log(e));
+  };
+
+  componentWillMount() {
+    allProducts();
+  }
 
   render() {
-    const { user } = this.state;
     const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-    if (!loggedUser) this.props.history.push("/login");
+
     return (
-      <div>
-        {user.role === "admin" ? <AllProductsAdmin /> : <AllProductsUser />}
-      </div>
+      <div>{!loggedUser ? <AllProductsUser /> : <AllProductsAdmin />}</div>
     );
   }
 }

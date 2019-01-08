@@ -8,10 +8,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <nav>
+        {/* <nav>
           <Link to="/new">Agregar nuevo producto</Link>
-          <Link to="/edit">Editar un producto</Link>
-        </nav>
+        </nav> */}
         <Navbar />
         <Routes />
       </div>
