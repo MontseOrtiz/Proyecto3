@@ -25,6 +25,12 @@ const userSchema = new Schema(
       enum: ["admin", "user"],
       default: "user"
     },
+    directionLine1: String,
+    directionLine2: String,
+    city: String,
+    state: String,
+    cp: Number,
+
     orders: [
       {
         type: Schema.Types.ObjectId,

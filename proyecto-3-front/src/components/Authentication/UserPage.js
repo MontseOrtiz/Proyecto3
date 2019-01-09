@@ -35,7 +35,7 @@ class UserPage extends Component {
       .then(r => {
         console.log("logeado", r);
         localStorage.setItem("loggedUser", JSON.stringify(r));
-        this.props.history.push("/profile");
+        this.props.history.push("/profile/:id");
       })
       .catch(e => {
         console.log(e);

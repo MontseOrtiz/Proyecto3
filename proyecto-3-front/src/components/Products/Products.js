@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { allProducts } from "../../services/product";
+import { getProfile } from "../../services/auth";
+// import axios from "axios";
 import AllProductsAdmin from "../Admin/AllProductsAdmin";
 import AllProductsUser from "../User/AllProductsUser";
 
@@ -8,23 +9,44 @@ class Products extends Component {
     user: {}
   };
 
-  allProducts = () => {
-    allProducts()
-      .then(response => {
-        this.setState({ products: response });
-      })
-      .catch(e => console.log(e));
-  };
+  // allProductsFiltro = () => {
+  //   const { search } = this.props.location;
+  //   let url;
+  //   if (search) url = "http://localhost:3000/product/products" + search;
+  //   else url = "http://localhost:3000/product/products";
+  //   axios
+  //     .get(url)
+  //     .then(response => {
+  //       this.setState({ products: response.data });
+  //       console.log(response.data);
+  //     })
+  //     .catch(e => console.log(e));
+  // };
 
   componentWillMount() {
-    allProducts();
+    getProfile()
+      .then(user => {
+        this.setState({ user });
+        console.log(user);
+        console.log(user.role);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
-    const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    const { user } = this.state;
+    // const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
 
     return (
-      <div>{!loggedUser ? <AllProductsUser /> : <AllProductsAdmin />}</div>
+      <div>
+        {user.role === "admin" ? (
+          <AllProductsAdmin {...this.props} />
+        ) : (
+          <AllProductsUser {...this.props} />
+        )}
+      </div>
     );
   }
 }

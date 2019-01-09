@@ -30,9 +30,9 @@ export const logout = () => {
 };
 
 //profile
-export const getProfile = id => {
+export const getProfile = () => {
   return axios
-    .get(host + "/profile/" + id, { withCredentials: true })
+    .get(host + "/profile", { withCredentials: true })
     .then(response => response.data)
     .catch(err => err.response);
 };
@@ -41,7 +41,7 @@ export const getProfile = id => {
 
 export const updateProfile = user => {
   return axios
-    .put(host + "/prodifle/edit/" + user._id, { withCredentials: true })
+    .put(host + "/prodifle/edit/" + user._id, user, { withCredentials: true })
     .then(response => response.data)
     .catch(err => err.response);
 };

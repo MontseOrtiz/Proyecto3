@@ -69,6 +69,12 @@ class NewProduct extends Component {
                 </select>
                 <label>Imagen:</label>
                 <input type="file" onChange={this.handleImage} name="photo" />
+                <label>Descripción:</label>
+                <textarea
+                  name="description"
+                  onChange={this.handleText}
+                  defaultValue="Agrege descripción"
+                />
                 <input type="submit" name="submit" />
               </form>
             </div>

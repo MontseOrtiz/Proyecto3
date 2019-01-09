@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Menu, Icon, Avatar } from "antd";
+import { logout } from "../../services/auth";
 import { Link } from "react-router-dom";
 
 const SubMenu = Menu.SubMenu;
@@ -17,6 +18,21 @@ class NavAdminLog extends Component {
     this.setState({
       current: e.key
     });
+  };
+
+  logout = e => {
+    const { user } = this.state;
+    e.preventDefault();
+    logout(user)
+      .then(r => {
+        console.log("Deslogeado", r);
+        localStorage.clear();
+        //this.props.history.push("/home");
+      })
+
+      .catch(e => {
+        console.log(e);
+      });
   };
 
   componentWillMount = () => {
@@ -52,9 +68,17 @@ class NavAdminLog extends Component {
               <Menu.Item key="setting:1">
                 <Link to="/allProducts">Todos los productos </Link>
               </Menu.Item>
-              <Menu.Item key="setting:2">Sabores</Menu.Item>
-              <Menu.Item key="setting:3">Colores</Menu.Item>
-              <Menu.Item key="setting:4">Materias Primas</Menu.Item>
+              <Menu.Item key="setting:2">
+                <Link to={"/allProducts?category=Sabores"}>Sabores</Link>
+              </Menu.Item>
+              <Menu.Item key="setting:3">
+                <Link to={"/allProducts?category=Colores"}> Colores</Link>
+              </Menu.Item>
+              <Menu.Item key="setting:4">
+                <Link to={"/allProducts?category=Materias"}>
+                  Materias Primas
+                </Link>
+              </Menu.Item>
             </MenuItemGroup>
           </SubMenu>
           {user.role.admin && (
@@ -87,96 +111,47 @@ class NavAdminLog extends Component {
               Ubicación
             </a>
           </Menu.Item>
-          {!user.role.admin ? (
-            <SubMenu
-              title={
-                <span className="submenu-title-wrapper">
-                  <Avatar style={{ backgroundColor: "#4b6ebf" }} icon="user" />
-                  Hola USUARIO{user.name}
-                </span>
-              }
-            >
-              <MenuItemGroup>
-                <Menu.Item key="settingUser:1">
-                  <Link to="/profile/:id">
-                    <Icon type="smile" />
-                    Mi perfil
-                  </Link>
-                </Menu.Item>
-                <Menu.Item key="settingUser:2">
-                  <Icon type="bars" />
-                  Mis pedidos
-                </Menu.Item>
-                <Menu.Item key="signup">
-                  <Link to="/signup">
-                    <Icon type="logout" />
-                    Cerrar sesión
-                  </Link>
-                </Menu.Item>
-              </MenuItemGroup>
-            </SubMenu>
-          ) : (
-            <SubMenu
-              title={
-                <span className="submenu-title-wrapper">
-                  <Avatar style={{ backgroundColor: "#4b6ebf" }} icon="user" />
-                  Hola {user.name}
-                </span>
-              }
-            >
-              <MenuItemGroup>
-                <Menu.Item key="setting:2">
-                  <Link to="/profile/:id">Mi perfil</Link>
-                </Menu.Item>
-                <Menu.Item key="setting:2">Estado de pedidos</Menu.Item>
-              </MenuItemGroup>
-            </SubMenu>
-          )}
-          {/* {!user.role.admin && (
-            <SubMenu
-              title={
-                <span className="submenu-title-wrapper">
-                  <Avatar style={{ backgroundColor: "#4b6ebf" }} icon="user" />
-                  Hola USUARIO{user.name}
-                </span>
-              }
-            >
-              <MenuItemGroup>
-                <Menu.Item key="settingUser:1">
-                  <Link to="/profile">
-                    <Icon type="smile" />
-                    Mi perfil
-                  </Link>
-                </Menu.Item>
-                <Menu.Item key="settingUser:2">
-                  <Icon type="bars" />
-                  Mis pedidos
-                </Menu.Item>
-                <Menu.Item key="signup">
-                  <Link to="/signup">
-                    <Icon type="logout" />
-                    Cerrar sesión
-                  </Link>
-                </Menu.Item>
-              </MenuItemGroup>
-            </SubMenu>
-          )}
-
+          <Menu.Item key="message">
+            <Link to="/newMessage">
+              <Icon type="message" />
+              Contactanos
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="CDCUser">
+            <Link to="/cart">
+              <Icon type="shopping-cart" />
+            </Link>
+          </Menu.Item>
           <SubMenu
             title={
               <span className="submenu-title-wrapper">
                 <Avatar style={{ backgroundColor: "#4b6ebf" }} icon="user" />
-                Hola {user.name}
+                Hola USUARIO{user.name}
               </span>
             }
           >
             <MenuItemGroup>
-              <Menu.Item key="setting:2">
-                <Link to="/profile">Mi perfil</Link>
+              <Menu.Item key="settingUser:1">
+                {/* <Link to={`/profile/${user._id}`}> */}
+                <Link to={`/profile/${user._id}`}>
+                  <Icon type="smile" />
+                  Mi perfil
+                </Link>
               </Menu.Item>
-              <Menu.Item key="setting:2">Estado de pedidos</Menu.Item>
+              <Menu.Item key="settingUser:2">
+                <Link to={"/allMessages"}>
+                  <Icon type="bars" />
+                  Mis pedidos
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="signup">
+                <Link to="/" onClick={this.logout}>
+                  <Icon type="logout" />
+                  Cerrar sesión
+                </Link>
+              </Menu.Item>
             </MenuItemGroup>
-          </SubMenu> */}
+          </SubMenu>
         </Menu>
       </nav>
     );

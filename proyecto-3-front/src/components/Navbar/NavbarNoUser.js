@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Menu, Icon, Badge } from "antd";
+import axios from "axios";
+import { Menu, Icon } from "antd";
 import { Link } from "react-router-dom";
 
 const SubMenu = Menu.SubMenu;
@@ -9,7 +10,8 @@ class NavbarNoUser extends Component {
   state = {
     current: "Home",
     user: {},
-    products: []
+    products: {},
+    filtered: {}
   };
 
   handleClick = e => {
@@ -17,6 +19,34 @@ class NavbarNoUser extends Component {
     this.setState({
       current: e.key
     });
+  };
+
+  filteredProducts = () => {
+    axios
+      .get("http://localhost:3000/product/products")
+      .then(response => {
+        let productos = response.data;
+        let filt = productos.filter(x => x.category === "Sabores");
+        this.setState({ filtered: filt });
+        console.log(this.state.filtered);
+      })
+      .catch(e => console.log(e));
+  };
+
+  allProductsFiltro = () => {
+    const { search } = this.props.location;
+    console.log(search);
+
+    let url;
+    if (search) url = "http://localhost:3000/product/products" + search;
+    else url = "http://localhost:3000/product/products";
+    axios
+      .get(url)
+      .then(response => {
+        this.setState({ products: response.data });
+        console.log(response.data);
+      })
+      .catch(e => console.log(e));
   };
 
   render() {
@@ -47,13 +77,23 @@ class NavbarNoUser extends Component {
                 <Link to="/allProducts">Todos los productos </Link>
               </Menu.Item>
               <Menu.Item key="setting:2">
-                <Link to="/sabores">Sabores</Link>
+                <Link to={"/allProducts"} onClick={this.filteredProducts}>
+                  Sabores
+                </Link>
               </Menu.Item>
               <Menu.Item key="setting:3">
-                <Link to="/colores"> Colores</Link>
+                <Link to={"/allProducts"} onClick={this.filteredProducts}>
+                  {" "}
+                  Colores
+                </Link>
               </Menu.Item>
               <Menu.Item key="setting:4">
-                <Link to="/colores">Materias Primas</Link>
+                <Link
+                  to={"/allProducts?category=Materias"}
+                  onClick={this.filteredProducts}
+                >
+                  Materias Primas
+                </Link>
               </Menu.Item>
             </MenuItemGroup>
           </SubMenu>
@@ -79,27 +119,17 @@ class NavbarNoUser extends Component {
               Ubicación
             </a>
           </Menu.Item>
-          <Menu.Item key="CDC">
-            <Badge count={0} showZero>
-              <a href="/new" className="head-example">
-                {" "}
-                <Icon type="shopping-cart" />
-              </a>
-            </Badge>
-            {/* <Link to="/new">
-                <Icon type="shopping-cart" />
-                CDC
-              </Link> */}
+          <Menu.Item key="message">
+            <Link to="/newMessage">
+              <Icon type="message" />
+              Contactanos
+            </Link>
           </Menu.Item>
-
-          {/* {!user.role && (
-            <Menu.Item key="login">
-              <Link to="/login">
-                <Icon type="user" />
-                Iniciar sesión
-              </Link>
-            </Menu.Item>
-          )} */}
+          <Menu.Item key="CDC">
+            <Link to="/cart">
+              <Icon type="shopping-cart" />
+            </Link>
+          </Menu.Item>
           <Menu.Item key="login">
             <Link to="/login">
               <Icon type="user" />

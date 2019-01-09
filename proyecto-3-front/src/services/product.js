@@ -46,7 +46,7 @@ export const materiasPrimas = category => {
 };
 
 //Single product
-export const singleProducts = id => {
+export const singleProduct = id => {
   return axios
     .get(host + "/" + id)
     .then(response => response.data)

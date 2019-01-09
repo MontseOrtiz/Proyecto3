@@ -40,18 +40,18 @@ router.get("/logout", (req, res, next) => {
 
 //profile
 
-router.get("/:id", isAuth, (req, res, next) => {
+router.get("/profile", isAuth, (req, res, next) => {
   return res.status(201).json(req.user);
 });
 
-module.exports = router;
-
 //edit profile
 
-router.put("/prodifle/edit/:id", isAuth, (req, res, next) => {
+router.put("/profile/edit/:id", isAuth, (req, res, next) => {
   User.findByIdAndUpdate(req.params.id, { $set: req.body })
     .then(response => {
       res.json(response);
     })
     .catch(e => res.json(e));
 });
+
+module.exports = router;

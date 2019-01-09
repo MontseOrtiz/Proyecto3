@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {
   updateProduct,
   uploadFile,
-  singleProducts
+  singleProduct
 } from "../../services/product";
 import { Layout } from "antd";
 
@@ -52,7 +52,7 @@ class EditProduct extends Component {
   componentWillMount() {
     //this.product();
     const { id } = this.props.match.params;
-    singleProducts(id)
+    singleProduct(id)
       .then(product => this.setState({ product }))
       .catch(e => console.log(e));
   }
@@ -115,6 +115,13 @@ class EditProduct extends Component {
                   style={{ height: 100 }}
                 />
                 <input type="file" onChange={this.handleImage} name="photo" />
+                <label>Descripción:</label>
+                <textarea
+                  type="text"
+                  name="description"
+                  value={product.description}
+                  onChange={this.handleText}
+                />
                 <input type="submit" name="submit" />
               </form>
             </div>

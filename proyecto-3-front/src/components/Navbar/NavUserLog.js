@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Menu, Icon, Avatar, Badge } from "antd";
 import { Link } from "react-router-dom";
+import { logout } from "../../services/auth";
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -17,6 +18,21 @@ class NavUserLog extends Component {
     this.setState({
       current: e.key
     });
+  };
+
+  logout = e => {
+    const { user } = this.state;
+    e.preventDefault();
+    logout(user)
+      .then(r => {
+        console.log("Deslogeado", r);
+        localStorage.clear();
+        this.props.history.push("/");
+      })
+
+      .catch(e => {
+        console.log(e);
+      });
   };
 
   render() {
@@ -81,10 +97,9 @@ class NavUserLog extends Component {
             </a>
           </Menu.Item>
           <Menu.Item key="CDCUser">
-            <Badge count={0} showZero>
-              <a href="/new" className="head-example" />
+            <Link href="/cart">
               <Icon type="shopping-cart" />
-            </Badge>
+            </Link>
           </Menu.Item>
           <SubMenu
             title={
@@ -96,7 +111,7 @@ class NavUserLog extends Component {
           >
             <MenuItemGroup>
               <Menu.Item key="settingUser:1">
-                <Link to="/profile/:id">
+                <Link to={`/profile/${user._id}`}>
                   <Icon type="smile" />
                   Mi perfil
                 </Link>
@@ -106,8 +121,8 @@ class NavUserLog extends Component {
                 Mis pedidos
               </Menu.Item>
               <Menu.Item key="signup">
-                <Link to="/signup">
-                  <Icon type="logout" />
+                <Link to="/">
+                  <Icon type="logout" onClick={this.logout} />
                   Cerrar sesión
                 </Link>
               </Menu.Item>

@@ -26,7 +26,8 @@ const productSchema = new Schema(
     category: {
       type: String,
       enum: ["Sabores", "Colores", "Materias Primas"]
-    }
+    },
+    description: String
   },
   {
     timestamps: {

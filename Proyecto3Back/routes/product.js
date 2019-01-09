@@ -10,7 +10,8 @@ router.post("/new", (req, res, next) => {
     measure: req.body.measure,
     price: req.body.price,
     photo: req.body.photo,
-    category: req.body.category
+    category: req.body.category,
+    description: req.body.description
   })
     .then(response => res.json(response))
     .catch(e => res.json(e));
@@ -18,7 +19,7 @@ router.post("/new", (req, res, next) => {
 
 //Review
 
-//All products
+// All products
 router.get("/products", (req, res, next) => {
   Product.find()
     .then(response => {
@@ -27,37 +28,32 @@ router.get("/products", (req, res, next) => {
     .catch(e => res.json(e));
 });
 
-//Colors
-router.get("/colores", (req, res, next) => {
-  Product.find({ category: req.body.category })
-    .then(response => {
-      res.json(response);
-    })
-    .catch(e => res.json(e));
-});
-
-//Flavors
-router.get("/sabores/:category", (req, res, next) => {
-  const { category } = req.params;
-  Product.find({ category })
-    .then(response => {
-      res.json(response);
-    })
-    .catch(e => res.json(e));
-});
-
-//Raw Materials
-router.get("/materias-primas", (req, res, next) => {
-  Product.find({ category: req.body.category })
-    .then(response => {
-      res.json(response);
-    })
-    .catch(e => res.json(e));
+//Filtros
+router.get("/products", (req, res, next) => {
+  const { category } = req.query;
+  console.log(category);
+  if (category) {
+    Product.find({ category })
+      .populate("user")
+      .then(response => {
+        res.json(response);
+      })
+      .catch(e => res.json(e));
+  } else {
+    Product.find()
+      .populate("user")
+      .then(response => {
+        res.json(response);
+      })
+      .catch(e => res.json(e));
+  }
 });
 
 //Single product
 router.get("/:id", (req, res, next) => {
-  Product.findById(req.params.id)
+  const { id } = req.params;
+  console.log("in, id:", id);
+  Product.findById(id)
     .then(response => {
       res.json(response);
     })

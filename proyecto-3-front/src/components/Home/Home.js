@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Carousel, Card, Col, Row } from "antd";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const { Content, Footer } = Layout;
 const { Meta } = Card;
@@ -36,18 +36,20 @@ const Home = () => (
 
           <Row type="flex" justify="space-around">
             <Col span={3}>
-              <Card
-                hoverable
-                style={{ width: 240 }}
-                cover={
-                  <img
-                    alt="Colores"
-                    src="../../images/Home-Productos-Colores.jpg"
-                  />
-                }
-              >
-                <Meta title="Colores" />
-              </Card>
+              <Link to={"/products?category=Colores"}>
+                <Card
+                  hoverable
+                  style={{ width: 240 }}
+                  cover={
+                    <img
+                      alt="Colores"
+                      src="../../images/Home-Productos-Colores.jpg"
+                    />
+                  }
+                >
+                  <Meta title="Colores" />
+                </Card>
+              </Link>
             </Col>
             <Col span={3}>
               <Card

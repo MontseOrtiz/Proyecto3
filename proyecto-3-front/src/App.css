@@ -141,7 +141,9 @@
 
 .div_form_product input[type="text"],
 input[type="number"],
-input[type="file"] {
+input[type="file"],
+input[type="email"],
+textarea {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -150,17 +152,6 @@ input[type="file"] {
   border-radius: 4px;
   box-sizing: border-box;
   background: white;
-}
-
-.div_form_product input[type="text"],
-input[type="number"] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
 }
 
 .div_form_product select {
