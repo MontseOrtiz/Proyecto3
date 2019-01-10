@@ -30,10 +30,6 @@ class App extends Component {
     const { loggedUser } = this.state;
     return (
       <div>
-        <nav>
-          <Link to="/new">Agregar nuevo producto</Link>
-        </nav>
-        {/* <nav>{!loggedUser ? <NavbarNoUser /> : <NavAdminLog />}</nav> */}
         {!loggedUser ? <NavbarNoUser /> : <NavAdminLog />}
         {/* <Navbar /> */}
         <Routes />

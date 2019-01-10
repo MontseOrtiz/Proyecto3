@@ -51,9 +51,8 @@ class NavAdminLog extends Component {
         >
           <Menu.Item key="home">
             <Link to="/">
-              <div className="logo">
-                <img src="../../images/logo.png" alt="logo" />
-              </div>
+              <Icon type="home" />
+              Inicio
             </Link>
           </Menu.Item>
           <Menu.Item key="products">
@@ -88,7 +87,7 @@ class NavAdminLog extends Component {
           <Menu.Item key="message">
             <Link to="/newMessage">
               <Icon type="message" />
-              Contactanos
+              Contáctanos
             </Link>
           </Menu.Item>
           <Menu.Item key="CDCUser">

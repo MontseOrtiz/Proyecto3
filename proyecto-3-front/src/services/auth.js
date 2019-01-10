@@ -1,7 +1,7 @@
 import axios from "axios";
 import firebase from "./firebase";
 
-const host = "http://localhost:3000/auth";
+const host = "https://bioproject3.herokuapp.com/auth";
 
 //signup
 

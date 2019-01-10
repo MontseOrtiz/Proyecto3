@@ -1,7 +1,7 @@
 import axios from "axios";
 import firebase from "./firebase";
 
-const host = "http://localhost:3000/product";
+const host = "https://bioproject3.herokuapp.com/product";
 
 //Create a product
 export const newProduct = product => {

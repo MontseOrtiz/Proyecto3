@@ -44,11 +44,10 @@ class NavUserLog extends Component {
           selectedKeys={[this.state.current]}
           mode="horizontal"
         >
-          <Menu.Item key="homeUser">
+          <Menu.Item key="home">
             <Link to="/">
-              <div className="logo">
-                <img src="../../images/logo.png" alt="logo" />
-              </div>
+              <Icon type="home" />
+              Inicio
             </Link>
           </Menu.Item>
           <SubMenu

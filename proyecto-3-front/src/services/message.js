@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const host = "http://localhost:3000/message";
+const host = "https://bioproject3.herokuapp.com/message";
 
 //Create a Message
 export const newMessage = message => {

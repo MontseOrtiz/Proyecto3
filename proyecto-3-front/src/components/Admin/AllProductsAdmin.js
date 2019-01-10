@@ -26,8 +26,9 @@ class AllProductsAdmin extends Component {
     const { search } = this.props.location;
 
     let url;
-    if (search) url = "http://localhost:3000/product/products" + search;
-    else url = "http://localhost:3000/product/products";
+    if (search)
+      url = "https://bioproject3.herokuapp.com/product/products" + search;
+    else url = "https://bioproject3.herokuapp.com/product/products";
     axios
       .get(url)
       .then(response => {

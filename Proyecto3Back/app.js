@@ -15,7 +15,7 @@ const MongoStore = require("connect-mongo")(session);
 
 mongoose
   .connect(
-    "mongodb://localhost/proyecto3back",
+    process.env.DB,
     { useNewUrlParser: true }
   )
   .then(x => {

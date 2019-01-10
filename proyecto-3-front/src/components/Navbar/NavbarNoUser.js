@@ -20,7 +20,7 @@ class NavbarNoUser extends Component {
 
   filteredProducts = () => {
     axios
-      .get("http://localhost:3000/product/products")
+      .get("https://bioproject3.herokuapp.com/product/products")
       .then(response => {
         let productos = response.data;
         let filt = productos.filter(x => x.category === "Sabores");
@@ -35,8 +35,9 @@ class NavbarNoUser extends Component {
     console.log(search);
 
     let url;
-    if (search) url = "http://localhost:3000/product/products" + search;
-    else url = "http://localhost:3000/product/products";
+    if (search)
+      url = "https://bioproject3.herokuapp.com/product/products" + search;
+    else url = "https://bioproject3.herokuapp.com/product/products";
     axios
       .get(url)
       .then(response => {
@@ -56,9 +57,8 @@ class NavbarNoUser extends Component {
         >
           <Menu.Item key="home">
             <Link to="/">
-              <div className="logo">
-                <img src="../../images/logo.png" alt="logo" />
-              </div>
+              <Icon type="home" />
+              Inicio
             </Link>
           </Menu.Item>
           <Menu.Item key="products">
@@ -93,7 +93,7 @@ class NavbarNoUser extends Component {
           <Menu.Item key="message">
             <Link to="/newMessage">
               <Icon type="message" />
-              Contactanos
+              Contáctanos
             </Link>
           </Menu.Item>
           <Menu.Item key="CDC">
