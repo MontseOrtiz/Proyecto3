@@ -24,7 +24,10 @@ class Products extends Component {
   // };
 
   componentWillMount() {
-    getProfile()
+    const user = JSON.parse(localStorage.getItem("loggedUser"));
+    this.setState({ user });
+    console.log(user);
+    /*getProfile()
       .then(user => {
         this.setState({ user });
         console.log(user);
@@ -32,7 +35,7 @@ class Products extends Component {
       })
       .catch(err => {
         console.log(err);
-      });
+      });*/
   }
 
   render() {
@@ -41,7 +44,7 @@ class Products extends Component {
 
     return (
       <div>
-        {user.role === "admin" ? (
+        {user && user.role === "admin" ? (
           <AllProductsAdmin {...this.props} />
         ) : (
           <AllProductsUser {...this.props} />

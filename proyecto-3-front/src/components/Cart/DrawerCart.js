@@ -7,10 +7,10 @@ const DrawerCart = ({ visible, onClose, cart }) => {
   return (
     <Drawer title="Cesta" placement="right" onClose={onClose} visible={visible}>
       {Object.values(cart).map(item => (
-        <span key={item.id}>
-          <Icon type={item.img} />
+        <span key={item._id}>
+          <Icon type={item.photo} />
           <br />
-          <strong>{item.name}</strong>
+          <strong>Producto: {item.name}</strong>
           <p>Qty: {item.qty}</p>
           <p>
             Price: {item.price} x {item.qty}

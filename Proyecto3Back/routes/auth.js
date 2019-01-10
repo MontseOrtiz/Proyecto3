@@ -40,18 +40,25 @@ router.get("/logout", (req, res, next) => {
 
 //profile
 
-router.get("/profile", isAuth, (req, res, next) => {
-  return res.status(201).json(req.user);
+router.get("/profile/:id", isAuth, (req, res, next) => {
+  const { id } = req.params;
+  console.log("hola");
+  User.findById(req.params.id)
+    .then(response => {
+      return res.status(201).json(response);
+    })
+    .catch(e => res.json(e));
 });
 
 //edit profile
 
 router.put("/profile/edit/:id", isAuth, (req, res, next) => {
-  User.findByIdAndUpdate(req.params.id, { $set: req.body })
-    .then(response => {
-      res.json(response);
+  console.log(req.body);
+  User.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
+    .then(user => {
+      res.status(200).json(user);
     })
-    .catch(e => res.json(e));
+    .catch(e => res.status(500).json(e));
 });
 
 module.exports = router;

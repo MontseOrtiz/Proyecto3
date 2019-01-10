@@ -23,22 +23,28 @@ class SingleProduct extends Component {
     console.log(this.props);
     this.singleProductc(this.props.match.params.id);
   }
+  componentDidMount() {
+    window.scroll(0, 0);
+  }
 
   render() {
     const { product } = this.state;
     return (
-      <div>
-        <div>
-          <img src={product.photo} alt={product.name} />
-        </div>
-        <div>
-          <h3>{product.name}</h3>
-          <p>Descripción: {product.description}</p>
-          <p>Precio: {product.price} MXN</p>
-          <p>Categoría: {product.category}</p>
-          <Link to="/allProducts">
-            <button>Todos los productos</button>
-          </Link>
+      <div className="back">
+        <div className="flex">
+          <div className="detail-photo">
+            <img src={product.photo} alt={product.name} />
+          </div>
+          <div className="product-detail">
+            <h3>{product.name}</h3>
+            <hr />
+            <p className="descript">Descripción: {product.description}</p>
+            <p className="price">Precio: $ {product.price} MXN</p>
+            <p>Categoría: {product.category}</p>
+            <Link to="/allProducts">
+              <button>Todos los productos</button>
+            </Link>
+          </div>
         </div>
       </div>
     );

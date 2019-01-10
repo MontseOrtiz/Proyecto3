@@ -17,10 +17,19 @@ router.post("/new", (req, res, next) => {
 //Review
 
 // All Messages
-router.get("/message", (req, res, next) => {
+router.get("/messages", (req, res, next) => {
   Message.find()
     .then(response => {
       res.json(response);
+    })
+    .catch(e => res.json(e));
+});
+
+//Delete a message
+router.delete("/:id", (req, res, next) => {
+  Message.findByIdAndRemove(req.params.id)
+    .then(response => {
+      res.json({ message: "Mensaje eliminado" });
     })
     .catch(e => res.json(e));
 });

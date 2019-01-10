@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 // import axios from "axios";
 import { Link } from "react-router-dom";
-import { Card, Button, Row, Col } from "antd";
+import { Card, Button, Row, Col, Icon } from "antd";
 import DrawerCart from "../Cart/DrawerCart";
-import { allProducts, singleProduct } from "../../services/product";
-import SingleProduct from "../Products/SingleProduct";
+import { allProducts } from "../../services/product";
 
 class AllProductsUser extends Component {
   state = {
@@ -75,49 +74,66 @@ class AllProductsUser extends Component {
 
     return (
       <div style={{ background: "#ECECEC" }}>
-        {/* <button onClick={this.allProductsFiltro("Sabores")}>Sabores</button>
+        <div style={{ width: "90%", margin: "0 auto" }}>
+          {/* <button onClick={this.allProductsFiltro("Sabores")}>Sabores</button>
         <button onClick={this.allProductsFiltro("Colores")}>Colores</button> */}
-        {/* <p onClick={this.allProductsFiltro("Sabores")}>sab</p> */}
-        <Row gutter={16} style={{ background: "#ECECEC", padding: "35px" }}>
-          {products.map((product, index) => {
-            return (
-              <Col span={6} key={product._id} style={{ paddingBottom: 12 }}>
-                <Card
-                  key={product.id}
-                  style={{ width: 300 }}
-                  cover={<img src={product.photo} alt="producto" />}
-                >
-                  <p>{product.name}</p>
-                  <p>
-                    Peso: {product.weight} <span>{product.measure}</span>
-                  </p>
-                  <p>Precio: {product.price} MXN</p>
-                  <p>Categoría: {product.category}</p>
-                  <p>Descripción: {product.description}</p>
-                  <Link to={`/allProducts/${product._id}`}>
-                    <Button
-                      type="primary"
-                      onClick={() => this.singleProductc(product._id)}
-                    >
-                      Características
-                    </Button>
-                  </Link>
-                  <Button
-                    type="primary"
-                    onClick={() => this.handleItem(product._id)}
+          {/* <p onClick={this.allProductsFiltro("Sabores")}>sab</p> */}
+          <Row gutter={16} style={{ background: "#ECECEC", padding: "35px" }}>
+            {products.map((product, index) => {
+              return (
+                <Col span={6} key={product._id} style={{ paddingBottom: 12 }}>
+                  <Card
+                    key={product.id}
+                    style={{ width: 300 }}
+                    cover={
+                      <img
+                        style={{ width: "80%", marginLeft: "10%" }}
+                        src={product.photo}
+                        alt="producto"
+                      />
+                    }
                   >
-                    Agregar al carrito
-                  </Button>
-                </Card>
-              </Col>
-            );
-          })}
-        </Row>
-        <DrawerCart
-          visible={visible}
-          onClose={() => this.setState({ visible: false })}
-          cart={cart}
-        />
+                    <h3 style={{ fontSize: "24px" }}>{product.name}</h3>
+
+                    <p>
+                      Peso: {product.weight} <span>{product.measure}</span>
+                    </p>
+                    <p>Precio: {product.price} MXN</p>
+                    <p>Categoría: {product.category}</p>
+                    <p>Descripción: {product.description}</p>
+                    <div
+                      className="justify"
+                      style={{
+                        display: "flex"
+                      }}
+                    >
+                      <Link to={`/allProducts/${product._id}`}>
+                        <Button
+                          style={{ marginRight: "20px" }}
+                          type="primary"
+                          onClick={() => this.singleProductc(product._id)}
+                        >
+                          Características
+                        </Button>
+                      </Link>
+                      <Button
+                        type="primary"
+                        onClick={() => this.handleItem(product._id)}
+                      >
+                        <Icon type="shop" />
+                      </Button>
+                    </div>
+                  </Card>
+                </Col>
+              );
+            })}
+          </Row>
+          <DrawerCart
+            visible={visible}
+            onClose={() => this.setState({ visible: false })}
+            cart={cart}
+          />
+        </div>
       </div>
     );
   }

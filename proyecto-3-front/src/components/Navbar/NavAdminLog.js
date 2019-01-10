@@ -27,7 +27,7 @@ class NavAdminLog extends Component {
       .then(r => {
         console.log("Deslogeado", r);
         localStorage.clear();
-        //this.props.history.push("/home");
+        console.log(this.props);
       })
 
       .catch(e => {
@@ -56,39 +56,13 @@ class NavAdminLog extends Component {
               </div>
             </Link>
           </Menu.Item>
-          <SubMenu
-            title={
-              <span className="submenu-title-wrapper">
-                <Icon type="shop" />
-                Productos
-              </span>
-            }
-          >
-            <MenuItemGroup>
-              <Menu.Item key="setting:1">
-                <Link to="/allProducts">Todos los productos </Link>
-              </Menu.Item>
-              <Menu.Item key="setting:2">
-                <Link to={"/allProducts?category=Sabores"}>Sabores</Link>
-              </Menu.Item>
-              <Menu.Item key="setting:3">
-                <Link to={"/allProducts?category=Colores"}> Colores</Link>
-              </Menu.Item>
-              <Menu.Item key="setting:4">
-                <Link to={"/allProducts?category=Materias"}>
-                  Materias Primas
-                </Link>
-              </Menu.Item>
-            </MenuItemGroup>
-          </SubMenu>
-          {user.role.admin && (
-            <Menu.Item key="login">
-              <Link to="/login">
-                <Icon type="user" />
-                ADMIN
-              </Link>
-            </Menu.Item>
-          )}
+          <Menu.Item key="products">
+            <Link to="/allProducts">
+              <Icon type="shop" />
+              Productos
+            </Link>
+          </Menu.Item>
+
           <Menu.Item key="aboutus">
             <Link to="/about-us">
               <Icon type="home" />
@@ -126,13 +100,12 @@ class NavAdminLog extends Component {
             title={
               <span className="submenu-title-wrapper">
                 <Avatar style={{ backgroundColor: "#4b6ebf" }} icon="user" />
-                Hola USUARIO{user.name}
+                Hola {user.name}
               </span>
             }
           >
             <MenuItemGroup>
               <Menu.Item key="settingUser:1">
-                {/* <Link to={`/profile/${user._id}`}> */}
                 <Link to={`/profile/${user._id}`}>
                   <Icon type="smile" />
                   Mi perfil

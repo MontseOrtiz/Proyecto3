@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Card, Row, Col } from "antd";
-import { allMessages } from "../../services/message";
+import { allMessages, deleteMessage } from "../../services/message";
 
 class AllMessages extends Component {
   state = {
@@ -10,9 +10,20 @@ class AllMessages extends Component {
   allMessages = () => {
     allMessages()
       .then(response => {
-        this.setState({ message: response });
+        this.setState({ messages: response });
       })
       .catch(e => console.log(e));
+  };
+
+  deleteMessage = id => {
+    deleteMessage(id)
+      .then(r => {
+        console.log(r);
+        this.allMessages();
+      })
+      .catch(e => {
+        console.log(e);
+      });
   };
 
   componentWillMount() {
@@ -20,7 +31,7 @@ class AllMessages extends Component {
   }
 
   render() {
-    const messages = this.state.messages;
+    const { messages } = this.state;
     console.log(messages);
 
     return (
@@ -45,6 +56,13 @@ class AllMessages extends Component {
                   <p>Email: {message.email}</p>
                   <p>Teléfono: {message.telephone} MXN</p>
                   <p>Mensaje: {message.message}</p>
+                  <button
+                    type="danger"
+                    onClick={() => this.deleteMessage(message._id)}
+                    style={{ marginLeft: "25px" }}
+                  >
+                    Eliminar
+                  </button>
                 </Card>
               </Col>
             );

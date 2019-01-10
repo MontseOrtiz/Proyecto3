@@ -68,11 +68,10 @@ class AllProductsAdmin extends Component {
 
     return (
       <div style={{ background: "#ECECEC" }}>
-        <Link to={`/new`}>
-          <Button type="primary">Agregar producto nuevo</Button>
-        </Link>
-        <Link to={`/allProducts?category=sabores`}>
-          <Button type="primary">Sabores</Button>
+        <Link to={`/new`} style={{ paddingLeft: "40%" }}>
+          <Button type="primary" style={{ marginTop: "30px" }}>
+            Agregar producto nuevo
+          </Button>
         </Link>
         <Row
           gutter={16}

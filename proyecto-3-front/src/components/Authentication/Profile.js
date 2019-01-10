@@ -1,19 +1,20 @@
 import React, { Component } from "react";
 import { getProfile } from "../../services/auth";
 import { Link } from "react-router-dom";
-import { Button } from "antd";
+
+import { Card, Icon } from "antd";
+
+const { Meta } = Card;
 
 class Profile extends Component {
   state = {
     user: {}
   };
 
-  getProfile = () => {
-    getProfile()
+  getProfile1 = id => {
+    getProfile(id)
       .then(user => {
         this.setState({ user });
-        console.log(user);
-        console.log(user.role);
       })
       .catch(err => {
         console.log(err);
@@ -21,7 +22,9 @@ class Profile extends Component {
   };
 
   componentWillMount() {
-    this.getProfile();
+    const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    // console.log(loggedUser._id);
+    this.setState({ user: loggedUser });
   }
 
   render() {
@@ -29,29 +32,50 @@ class Profile extends Component {
     const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     if (!loggedUser) this.props.history.push("/login");
     return (
-      <div>
-        <div>
-          <h1>{user.name}</h1>
-          <img src={user.photoURL} alt="profile_photo" />
-          <Link to={`/profile/edit/${user._id}`}>
-            <Button type="primary">Editar Perfil</Button>
-          </Link>
-        </div>
-        <div>
-          <div>
-            <h3>Datos Personales</h3>
-            <p>Nombre: {user.name}</p>
-            <p>Apellido: {user.lastname}</p>
-            <p>Telefono: {user.telephones}</p>
-          </div>
-          <div>
-            <h3>Direccion de envio </h3>
-            <p>Dirección de la calle : {user.directionLine1}</p>
-            <p> {user.directionLine1}</p>
-            <p>Ciudad:: {user.city}</p>
-            <p>Estado: {user.state}</p>
-            <p>Código Postal: {user.cp}</p>
-          </div>
+      <div className="fondo-profile">
+        <div className="card-profile">
+          <Card
+            style={{ width: 300 }}
+            cover={
+              <img
+                src={
+                  user.photoURL
+                    ? user.photoURL
+                    : "https://lamasonagency.com/wp-content/uploads/2015/06/Facebook-no-profile-picture-icon-620x389-620x321.jpg"
+                }
+                alt="profile_photo"
+              />
+            }
+            actions={[
+              <Link to={`/profile/edit/${loggedUser._id}`}>
+                <Icon type="edit" /> Editar Perfil
+              </Link>
+            ]}
+          >
+            <Meta
+              title={
+                <div>
+                  <div>
+                    <h3 style={{}}>Datos Personales</h3>
+                    <hr />
+                    <p>Nombre: {user.name}</p>
+                    <p>Apellido: {user.lastname}</p>
+                    <p>Telefono: {user.telephones}</p>
+                  </div>
+                  <br />
+                  <div>
+                    <h3>Direccion de envio </h3>
+                    <hr />
+                    <p>Dirección de la calle : {user.directionLine1}</p>
+                    <p> {user.directionLine1}</p>
+                    <p>Ciudad:: {user.city}</p>
+                    <p>Estado: {user.state}</p>
+                    <p>Código Postal: {user.cp}</p>
+                  </div>
+                </div>
+              }
+            />
+          </Card>
         </div>
       </div>
     );

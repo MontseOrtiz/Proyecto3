@@ -1,31 +1,19 @@
 import React from "react";
-import { Layout, Carousel, Card, Col, Row } from "antd";
+import { Layout } from "antd";
 import { Link } from "react-router-dom";
 
 const { Content, Footer } = Layout;
-const { Meta } = Card;
 
 const Home = () => (
   <div>
     <Layout>
       <Content>
-        <Carousel autoplay>
-          <div className="carousel_div1">
-            <img src="../../images/Logo.png" alt="Logo" />
-            <h3>1</h3>
-          </div>
-          <div className="carousel_div2">
-            <h3>2</h3>
-          </div>
-          <div className="carousel_div3">
-            <h3>3</h3>
-          </div>
-          <div className="carousel_div4">
-            <h3>4</h3>
-          </div>
-        </Carousel>
-        <div style={{ background: "#fcfcfc", padding: "30px" }}>
-          <div>
+        <div className="home-cover">
+          <img src="./images/Fondo.png" alt="Logo" />
+        </div>
+
+        <div>
+          <div className="Prod">
             <h2>Nuestros Productos</h2>
             <p>
               Contamos con colores, sabores, materias primas, fragancias y
@@ -34,52 +22,57 @@ const Home = () => (
             </p>
           </div>
 
-          <Row type="flex" justify="space-around">
-            <Col span={3}>
-              <Link to={"/products?category=Colores"}>
-                <Card
-                  hoverable
-                  style={{ width: 240 }}
-                  cover={
-                    <img
-                      alt="Colores"
-                      src="../../images/Home-Productos-Colores.jpg"
-                    />
-                  }
-                >
-                  <Meta title="Colores" />
-                </Card>
-              </Link>
-            </Col>
-            <Col span={3}>
-              <Card
-                hoverable
-                style={{ width: 240 }}
-                cover={
-                  <img
-                    alt="Sabores"
-                    src="../../images/Home-Productos-Sabores.jpeg"
-                  />
-                }
-              >
-                <Meta title="Sabores" />
-              </Card>
-            </Col>
-            <Col span={3}>
-              <Card
-                hoverable
-                style={{ width: 240 }}
-                cover={
-                  <img
-                    alt="Materias primas"
-                    src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                  />
-                }
-              >
-                <Meta title="Materias Primas" />
-              </Card>
-            </Col>
-          </Row>
+          <div />
+          <div className="caracteristicas">
+            <div className="div1">
+              <img
+                alt="Colores"
+                src="../../images/Home-Productos-Colores.jpg"
+              />
+            </div>
+            <div className="div2">
+              <img
+                alt="Sabores"
+                src="../../images/Home-Productos-Sabores.jpeg"
+              />
+            </div>
+            <div className="div3">
+              <img
+                alt="Materias primas"
+                src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+              />
+            </div>
+          </div>
+          <div className="contacto">
+            <div>
+              <h2>Contacto</h2>
+              <p className="tel">01 55 5745 3333</p>
+            </div>
+            <div>
+              <h2>Dirección</h2>
+              <p className="dir">
+                Manuel Calero N°9 Santa Martha Acatitla 09510 Iztapalapa, CDMX
+                México
+              </p>
+            </div>
+            <div>
+              <h2>Horario de atención</h2>
+              <p className="hr">
+                lun.: 8:00–4:30 <br />
+                mar.: 8:00–4:30
+                <br />
+                mié.: 8:00–4:30
+                <br />
+                jue.: 8:00–4:30
+                <br />
+                vie.: 8:00–4:30
+                <br />
+                sáb.: Cerrado
+                <br />
+                dom.: Cerrado
+              </p>
+            </div>
+          </div>
         </div>
       </Content>
       <Footer style={{ textAlign: "center" }}>

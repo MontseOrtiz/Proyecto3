@@ -7,34 +7,12 @@
   padding-bottom: 1%;
 }
 
-/* Carousel */
-
-.ant-carousel .slick-slide {
-  text-align: center;
-  height: 160px;
-  line-height: 160px;
-  background: #c7d3e9;
-  overflow: hidden;
-}
-
-.ant-carousel .slick-slide h3 {
-  color: #fff;
-}
-
-.carousel_div2 {
-  background-image: url("images/Fondo_Home_1.jpeg");
-  background-repeat: no-repeat;
-  background-size: 901px 417.19px;
-  /* width: 100%;
-  height: 100%; */
-}
-
 /* QUESTIONS */
 .content-questions {
   background: white;
 }
 .top-part-questions {
-  background: #e57d6b;
+  background: #6ea5a5;
   height: 40vh;
   display: flex;
   justify-content: center;
@@ -72,7 +50,7 @@
   padding: 5%;
 }
 .contenido-aboutus h2 {
-  font-size: 4vh;
+  font-size: 30px;
   padding-bottom: 3%;
   text-align: center;
 }
@@ -80,7 +58,7 @@
 .contenido-aboutus p {
   text-align: justify;
   color: rgb(44, 43, 43);
-  font-size: 2.4vh;
+  font-size: 18px;
 }
 
 /* LOGIN & SIGNUP*/
@@ -118,7 +96,7 @@
 
 .edit-form {
   width: 80%;
-  background: #e9ebeb;
+  background: #f5f5f5;
 }
 
 .div_form_principal {
@@ -129,13 +107,13 @@
   align-items: center;
   padding-top: 3%;
   padding-bottom: 6%;
-  background: #d2dad6d8;
+  background: #f5f5f5;
 }
 
 .div_form_product {
   width: 600px;
   border-radius: 5px;
-  background-color: #f7ebe0;
+  background-color: white;
   padding: 30px;
 }
 
@@ -167,7 +145,7 @@ textarea {
 
 .div_form_product input[type="submit"] {
   width: 100%;
-  background-color: #62fabad8;
+  background-color: #60a5a5;
   color: rgb(59, 58, 58);
   padding: 14px 20px;
   margin: 8px 0;
@@ -177,5 +155,173 @@ textarea {
 }
 
 .div_form_product input[type="submit"]:hover {
-  background-color: #8bf3c8b7;
+  background-color: #71a7a7;
+}
+
+/* DETALLE DE PRODUCTO */
+
+.flex {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  background-color: white;
+  box-shadow: 10px 10px 5px -8px rgba(199, 199, 199, 1);
+}
+.back {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 50px 0;
+}
+.product-detail {
+  padding: 5%;
+}
+.product-detail h3 {
+  font-size: 36px;
+  margin-bottom: 0;
+}
+.product-detail hr {
+  width: 150px;
+  height: 2px;
+  border: none;
+  background-color: #60a5a5;
+  margin-left: 0;
+}
+.descript {
+  margin: 30px 0;
+  font-size: 18px;
+}
+.price {
+  font-size: 18px;
+  font-weight: bolder;
+}
+.detail-photo {
+  width: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 1s ease;
+}
+.detail-photo img {
+  width: 80%;
+  margin-left: 10%;
+}
+.detail-photo img:hover {
+  transform: scale(1.1);
+}
+
+/* CARRITO DE COMPRAS */
+.cart-table {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 10%;
+}
+
+.cart-table table {
+  width: 100%;
+  border: black;
+}
+
+.cart-table th,
+td {
+  border: 2px solid #adacac;
+}
+
+.cart-table th {
+  font-size: 20px;
+  text-align: center;
+  background-color: #6ca5a5c2;
+  height: 50px;
+}
+
+.cart-table td {
+  height: 40px;
+  padding-left: 2px;
+}
+.cart-table tr:nth-child(even) {
+  background-color: rgb(228, 226, 226);
+}
+
+/* HOME */
+.home-cover {
+  /* background: url("./images/Fondo.png");
+  background-repeat: no-repeat; */
+  width: 100%;
+  height: 400px;
+}
+
+.home-cover img {
+  width: 100%;
+  height: 400px;
+}
+
+.caracteristicas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+.caracteristicas div {
+  width: 50%;
+  height: 50%;
+}
+
+.contacto div:hover {
+  transform: scale(1.1);
+}
+
+.contacto {
+  background: url("./images/Fondo2.jpg");
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-top: 6%;
+}
+
+.contacto div {
+  background: rgba(248, 246, 246, 0.644);
+  border-radius: 5px;
+  padding: 25px;
+  width: 300px;
+  height: 250px;
+}
+
+.contacto h2 {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.dir {
+  padding-left: 18px;
+  padding-top: 30px;
+}
+
+.tel {
+  padding-left: 60px;
+  padding-top: 40px;
+}
+
+.hr {
+  padding-left: 78px;
+  padding-top: 5px;
+}
+
+.prod {
+  background-color: rgba(22, 21, 21, 0.561);
+}
+/* PROFILE */
+
+.fondo-profile {
+  background: #f5f5f5;
+}
+.card-profile {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 50px 0;
 }

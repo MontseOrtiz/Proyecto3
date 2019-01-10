@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { updateProfile, uploadFile, getProfile } from "../../services/auth";
+import { updateProfile, uploadFile } from "../../services/auth";
 import { Layout } from "antd";
 
 const { Content, Footer } = Layout;
@@ -13,9 +13,10 @@ class EditProfile extends Component {
     e.preventDefault();
     const { user } = this.state;
     updateProfile(user)
-      .then(r => {
-        console.log(r);
-        this.props.history.push("/profile");
+      .then(user => {
+        this.setState({ user });
+        localStorage.setItem("loggedUser", JSON.stringify(user));
+        this.props.history.push("/profile/" + user._id);
       })
       .catch(e => {
         console.log(e);
@@ -27,7 +28,7 @@ class EditProfile extends Component {
     const { user } = this.state;
     const file = e.target.files[0];
     uploadFile(file).then(link => {
-      user["photo"] = link;
+      user["photoURL"] = link;
       this.setState({ user });
       console.log("done");
     });
@@ -37,29 +38,24 @@ class EditProfile extends Component {
     const { user } = this.state;
     const field = e.target.name;
     user[field] = e.target.value;
-    console.log(user);
+
     this.setState({ user });
   };
 
   componentWillMount() {
-    //this.user();
-    const { id } = this.props.match.params;
-    console.log(id);
-    getProfile(id)
-      .then(user => this.setState({ user }))
-      .catch(e => console.log(e));
+    const user = JSON.parse(localStorage.getItem("loggedUser"));
+    this.setState({ user });
   }
 
   render() {
     const { user } = this.state;
-    console.log(user);
 
     return (
       <Layout>
         <Content>
           <div className="div_form_principal">
             <div className="div_form_product">
-              <form method="POST" onSubmit={this.updateProduct}>
+              <form method="POST" onSubmit={this.updateProfile}>
                 <label>Nombre:</label>
                 <input
                   type="text"
@@ -117,7 +113,7 @@ class EditProfile extends Component {
                   value={user.state}
                   onChange={this.handleText}
                 />
-                <label>Código posta:</label>
+                <label>Código postal:</label>
                 <input
                   type="number"
                   name="cp"

@@ -19,3 +19,11 @@ export const allMessages = () => {
     .then(response => response.data)
     .catch(err => err.response);
 };
+
+//Delete a product
+export const deleteMessage = id => {
+  return axios
+    .delete(host + "/" + id, { withCredentials: true })
+    .then(response => response.data)
+    .catch(err => err.response);
+};
