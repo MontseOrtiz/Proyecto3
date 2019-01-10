@@ -13,7 +13,7 @@ class UserPage extends Component {
     e.preventDefault();
     signup(user)
       .then(r => {
-        this.props.history.push("/profile");
+        this.props.history.push("/");
         console.log(r);
       })
       .catch(e => {
