@@ -34,7 +34,10 @@ class UserPage extends Component {
     login(user)
       .then(r => {
         console.log("logeado", r);
-        localStorage.setItem("loggedUser", JSON.stringify(r));
+        if (r.name) {
+          localStorage.setItem("loggedUser", JSON.stringify(r));
+        }
+
         this.props.history.push("/");
       })
       .catch(e => {

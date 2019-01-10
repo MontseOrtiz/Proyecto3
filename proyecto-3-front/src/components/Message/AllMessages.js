@@ -47,11 +47,7 @@ class AllMessages extends Component {
           {messages.map((message, index) => {
             return (
               <Col span={6} key={message._id} style={{ paddingBottom: 12 }}>
-                <Card
-                  hoverable
-                  title="Nombre de cliente: {message.name}"
-                  style={{ width: 300 }}
-                >
+                <Card hoverable title={message.name} style={{ width: 300 }}>
                   <p>Nombre de cliente: {message.name}</p>
                   <p>Email: {message.email}</p>
                   <p>Teléfono: {message.telephone} MXN</p>

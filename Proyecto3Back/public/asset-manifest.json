@@ -1,7 +1,7 @@
 {
   "main.css": "/static/css/main.bf1ad6b9.chunk.css",
-  "main.js": "/static/js/main.1eddc258.chunk.js",
-  "main.js.map": "/static/js/main.1eddc258.chunk.js.map",
+  "main.js": "/static/js/main.f69c68dc.chunk.js",
+  "main.js.map": "/static/js/main.f69c68dc.chunk.js.map",
   "static/css/1.c34f2b64.chunk.css": "/static/css/1.c34f2b64.chunk.css",
   "static/js/1.4369dded.chunk.js": "/static/js/1.4369dded.chunk.js",
   "static/js/1.4369dded.chunk.js.map": "/static/js/1.4369dded.chunk.js.map",
@@ -11,6 +11,6 @@
   "static/media/App.css": "/static/media/Fondo2.12520e31.jpg",
   "static/css/1.c34f2b64.chunk.css.map": "/static/css/1.c34f2b64.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.dbfa17ae22211915c5cfe16343ac2ac4.js": "/precache-manifest.dbfa17ae22211915c5cfe16343ac2ac4.js",
+  "precache-manifest.570ccc2ecb6419b6545994f0e23a7cd4.js": "/precache-manifest.570ccc2ecb6419b6545994f0e23a7cd4.js",
   "service-worker.js": "/service-worker.js"
 }
