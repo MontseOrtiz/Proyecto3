@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { getProfile } from "../../services/auth";
-// import axios from "axios";
+
 import AllProductsAdmin from "../Admin/AllProductsAdmin";
 import AllProductsUser from "../User/AllProductsUser";
 
@@ -27,20 +26,10 @@ class Products extends Component {
     const user = JSON.parse(localStorage.getItem("loggedUser"));
     this.setState({ user });
     console.log(user);
-    /*getProfile()
-      .then(user => {
-        this.setState({ user });
-        console.log(user);
-        console.log(user.role);
-      })
-      .catch(err => {
-        console.log(err);
-      });*/
   }
 
   render() {
     const { user } = this.state;
-    // const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
 
     return (
       <div>

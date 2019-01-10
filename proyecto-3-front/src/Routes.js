@@ -14,7 +14,6 @@ import EditProfile from "./components/Authentication/EditProfile";
 import SingleProduct from "./components/Products/SingleProduct";
 import NewMessage from "./components/Message/NewMessage";
 import AllMessage from "./components/Message/AllMessages";
-import AllProductsUser from "./components/User/AllProductsUser";
 
 const Routes = () => (
   <Switch>

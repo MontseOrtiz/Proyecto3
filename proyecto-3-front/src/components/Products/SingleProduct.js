@@ -11,7 +11,6 @@ class SingleProduct extends Component {
     // console.log("re", id);
     singleProduct(id)
       .then(r => {
-        console.log(r);
         this.setState({ product: r });
       })
       .catch(e => {
@@ -20,7 +19,6 @@ class SingleProduct extends Component {
   };
 
   componentWillMount() {
-    console.log(this.props);
     this.singleProductc(this.props.match.params.id);
   }
   componentDidMount() {
@@ -42,7 +40,7 @@ class SingleProduct extends Component {
             <p className="price">Precio: $ {product.price} MXN</p>
             <p>Categoría: {product.category}</p>
             <Link to="/allProducts">
-              <button>Todos los productos</button>
+              <button className="boton-single">Todos los productos</button>
             </Link>
           </div>
         </div>

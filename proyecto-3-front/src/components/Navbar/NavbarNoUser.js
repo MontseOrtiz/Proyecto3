@@ -3,9 +3,6 @@ import axios from "axios";
 import { Menu, Icon } from "antd";
 import { Link } from "react-router-dom";
 
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
-
 class NavbarNoUser extends Component {
   state = {
     current: "Home",
@@ -15,7 +12,7 @@ class NavbarNoUser extends Component {
   };
 
   handleClick = e => {
-    console.log("click ", e);
+    // console.log("click ", e);
     this.setState({
       current: e.key
     });
@@ -64,39 +61,13 @@ class NavbarNoUser extends Component {
               </div>
             </Link>
           </Menu.Item>
-          <SubMenu
-            title={
-              <span className="submenu-title-wrapper">
-                <Icon type="shop" />
-                Productos
-              </span>
-            }
-          >
-            <MenuItemGroup>
-              <Menu.Item key="setting:1">
-                <Link to="/allProducts">Todos los productos </Link>
-              </Menu.Item>
-              <Menu.Item key="setting:2">
-                <Link to={"/allProducts"} onClick={this.filteredProducts}>
-                  Sabores
-                </Link>
-              </Menu.Item>
-              <Menu.Item key="setting:3">
-                <Link to={"/allProducts"} onClick={this.filteredProducts}>
-                  {" "}
-                  Colores
-                </Link>
-              </Menu.Item>
-              <Menu.Item key="setting:4">
-                <Link
-                  to={"/allProducts?category=Materias"}
-                  onClick={this.filteredProducts}
-                >
-                  Materias Primas
-                </Link>
-              </Menu.Item>
-            </MenuItemGroup>
-          </SubMenu>
+          <Menu.Item key="products">
+            <Link to="/allProducts">
+              <Icon type="shop" />
+              Productos
+            </Link>
+          </Menu.Item>
+
           <Menu.Item key="aboutus">
             <Link to="/about-us">
               <Icon type="home" />

@@ -1,6 +1,5 @@
 import React from "react";
 import { Layout } from "antd";
-import { Link } from "react-router-dom";
 
 const { Content, Footer } = Layout;
 
@@ -13,36 +12,6 @@ const Home = () => (
         </div>
 
         <div>
-          <div className="Prod">
-            <h2>Nuestros Productos</h2>
-            <p>
-              Contamos con colores, sabores, materias primas, fragancias y
-              premezclas vitamínicas para la industria Alimentaria, Cosmética y
-              Farmacéutica.
-            </p>
-          </div>
-
-          <div />
-          <div className="caracteristicas">
-            <div className="div1">
-              <img
-                alt="Colores"
-                src="../../images/Home-Productos-Colores.jpg"
-              />
-            </div>
-            <div className="div2">
-              <img
-                alt="Sabores"
-                src="../../images/Home-Productos-Sabores.jpeg"
-              />
-            </div>
-            <div className="div3">
-              <img
-                alt="Materias primas"
-                src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-              />
-            </div>
-          </div>
           <div className="contacto">
             <div>
               <h2>Contacto</h2>

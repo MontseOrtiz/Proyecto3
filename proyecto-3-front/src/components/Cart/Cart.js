@@ -17,27 +17,29 @@ class Cart extends Component {
     console.log(total);
 
     return (
-      <div className="cart-table">
-        <h2>Carrito de compras</h2>
-        <tbody>
-          <tr>
-            <th>Nombre del producto</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Total</th>
-          </tr>
-
-          {Object.values(cart).map(product => (
-            <tr key={product._id}>
-              <td>{product.name}</td>
-              <td>{product.price}</td>
-              <td>{product.qty}</td>
-              <td>${product.total}</td>
+      <div className="div-table">
+        <div className="cart-table">
+          <h2>Carrito de compras</h2>
+          <tbody className="tbody-cart">
+            <tr>
+              <th>Nombre del producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Total</th>
             </tr>
-          ))}
-        </tbody>
-        <h3>Total: {total}</h3>
-        <button>Proceder al pago</button>
+
+            {Object.values(cart).map(product => (
+              <tr key={product._id}>
+                <td>{product.name}</td>
+                <td>{product.price}</td>
+                <td>{product.qty}</td>
+                <td>${product.total}</td>
+              </tr>
+            ))}
+          </tbody>
+          <h3>Total: {total.total}</h3>
+          <button className="boton-single2">Proceder al pago</button>
+        </div>
       </div>
     );
   }
